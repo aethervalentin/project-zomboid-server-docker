@@ -189,8 +189,8 @@ NEW_VERSION=$(versionCompare ${LATEST_STABLE_VERSION} ${LATEST_IMAGE_STABLE_VERS
 if [ "${LATEST_IMAGE_STABLE_VERSION}" == "" ] || [ $NEW_VERSION == 1 ]; then
   echo -e "\n\nA new version of the stable server was detected ($LATEST_STABLE_VERSION). Creating the new image...\n"
 
-  docker build --compress --no-cache -t ${DOCKER_IMAGE}:latest -t ${DOCKER_IMAGE}:latest-release -t ${DOCKER_IMAGE}:${LATEST_SERVER_VERSION}-release .
-  docker push ${DOCKER_IMAGE}:${LATEST_SERVER_VERSION}-release
+  docker build --compress --no-cache -t ${DOCKER_IMAGE}:latest -t ${DOCKER_IMAGE}:latest-release -t ${DOCKER_IMAGE}:${LATEST_STABLE_VERSION}-release .
+  docker push ${DOCKER_IMAGE}:${LATEST_STABLE_VERSION}-release
   docker push ${DOCKER_IMAGE}:latest-release
   docker push ${DOCKER_IMAGE}:latest
 elif [ $NEW_VERSION == 0 ]; then
